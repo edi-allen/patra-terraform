@@ -20,6 +20,8 @@ resource "aws_launch_configuration" "web_server" {
   instance_type        = "t2.micro"
   iam_instance_profile = aws_iam_instance_profile.ec2_s3_access_profile.name
   security_groups      = [aws_security_group.webserver.id]
+  key_name             = aws_key_pair.ssh_key.key_name
+  user_data            = file("templates/userdata.sh")
 
   lifecycle {
     create_before_destroy = true

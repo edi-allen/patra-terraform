@@ -4,9 +4,9 @@ resource "aws_cloudwatch_metric_alarm" "web_cpu_alarm_up" {
   evaluation_periods  = "2"
   metric_name         = "CPUUtilization"
   namespace           = "AWS/EC2"
-  period              = "120"
+  period              = "30"
   statistic           = "Average"
-  threshold           = "80"
+  threshold           = "40"
 
   dimensions = {
     AutoScalingGroupName = aws_autoscaling_group.web_server.name
@@ -22,9 +22,9 @@ resource "aws_cloudwatch_metric_alarm" "web_cpu_alarm_down" {
   evaluation_periods  = "2"
   metric_name         = "CPUUtilization"
   namespace           = "AWS/EC2"
-  period              = "120"
+  period              = "30"
   statistic           = "Average"
-  threshold           = "60"
+  threshold           = "20"
 
   dimensions = {
     AutoScalingGroupName = aws_autoscaling_group.web_server.name
